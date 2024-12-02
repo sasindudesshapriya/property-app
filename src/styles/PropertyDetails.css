@@ -1,0 +1,35 @@
+.property-details-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .property-details-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .property-details-item {
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  
+  .property-details-item span {
+    font-weight: bold;
+  }
+  
+  .back-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  
