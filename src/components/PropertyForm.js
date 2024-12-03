@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-import { createProperty } from "../services/api";
+import React, { useEffect, useState } from "react";
+import { createProperty, updateProperty } from "../services/api";
 import "../styles/PropertyForm.css";
+import { useNavigate } from "react-router-dom";
 
-const PropertyForm = () => {
+const PropertyForm = ({ initialData = {} }) => {
+  const navigate = useNavigate();
+
   const [property, setProperty] = useState({
     title: "",
     type: "",
@@ -12,15 +15,19 @@ const PropertyForm = () => {
     description: "",
   });
 
+  // Populate form fields with initialData when available
+  useEffect(() => {
+    if ( Object.keys(initialData).length > 0 ) {
+      setProperty(( prev ) => ({ ...prev, ...initialData }));
+    }
+  },[initialData])
+
   const handleChange = (e) => {
     setProperty({ ...property, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    createProperty(property);
-    // Reset form
-    setProperty({
+  const handleReset = () => {
+    setProperty(Object.keys(initialData).length > 0 ? initialData : {
       title: "",
       type: "",
       purpose: "",
@@ -30,9 +37,23 @@ const PropertyForm = () => {
     });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if ( initialData.id ) {
+      // Update existing property
+      await updateProperty ( initialData.id, property ); // Send the updated data to the API
+    }
+    else {
+      // Create a new property
+      await createProperty(property); 
+    }
+    
+    navigate("/"); // Redirect to the property list page
+  };
+
   return (
     <div className="form-container">
-      <h2>Add New Property</h2>
+       <h2>{initialData.id ? "Edit Property" : "Add New Property"}</h2> 
       <form onSubmit={handleSubmit}>
         <div className="form-input">
           <label>Title</label>
@@ -100,8 +121,12 @@ const PropertyForm = () => {
         </div>
 
         <div className="form-buttons">
-          <button type="submit" className="btn">Add Property</button>
-          <button type="reset" className="btn reset">Reset</button>
+          <button type="submit" className="btn">
+            { initialData.id ? "Edit Property" : "Add Property" }
+          </button>
+          <button type="reset" className="btn reset" onClick={handleReset}>
+            Reset
+          </button>
         </div>
       </form>
     </div>

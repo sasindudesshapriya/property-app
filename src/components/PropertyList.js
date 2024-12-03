@@ -42,9 +42,9 @@ const PropertyList = () => {
               <p>Status: {property.status}</p>
             </div>
             <div className="property-actions">
-              <Link to={`/edit/${property.id}`} className="btn">Edit</Link>
-              <button onClick={() => handleDelete(property.id)} className="btn">Delete</button>
-              <Link to={`/properties/${property.id}`} className="btn">View Details</Link>
+              <Link to={`/edit/${property.id}`} className="edit-btn">Edit</Link>
+              <button onClick={() => handleDelete(property.id)} className="delete-btn">Delete</button>
+              <Link to={`/properties/${property.id}`} className="view-btn">View Details</Link>
             </div>
           </li>
         ))}

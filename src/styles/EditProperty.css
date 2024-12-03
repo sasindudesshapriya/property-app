@@ -1,11 +1,12 @@
 .edit-property-container {
     background-color: #f4f4f4;
     padding: 20px;
+    margin-top: 20px;
     border-radius: 8px;
     border: 1px solid #ddd;
     width: 100%;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 20px auto;
   }
   
   .edit-property-container h2 {

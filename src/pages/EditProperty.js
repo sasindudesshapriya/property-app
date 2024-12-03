@@ -13,7 +13,8 @@ const EditProperty = () => {
       try {
         const response = await fetchPropertyById(id);
         setProperty(response.data);
-      } catch (error) {
+      } 
+      catch (error) {
         console.error('Error fetching property for edit:', error);
       }
     };
