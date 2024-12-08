@@ -1,0 +1,169 @@
+body {
+  background-color: hsla(188, 100%, 42%, 0.1);;
+}
+
+/* General Page Styling */
+.contact-us-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 30px auto;
+}
+
+.contact-header {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: hsl(220, 15%, 40%);
+  border: none;
+  padding: 10px 20px;
+  margin-left: 300px;
+  margin-right: 300px;
+}
+
+/* Row Styling */
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Card Styling */
+.contact-card-details {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1 1 calc(50% - 20px);
+  max-width: 500px;
+  text-align: left;
+}
+
+.contact-card-details h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.contact-card-details p {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #555;
+}
+
+.contact-card-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-card-details ul li {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Adjusted Back Link Style for Contact Card */
+.contact-card-details .back-link {
+  padding: 12px;
+  font-size: 16px;
+  background-color: hsl(211, 100%, 50%);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 140px;
+  margin-left: 170px;
+  margin-right: 170px;
+}
+
+.contact-card-details .back-link:hover {
+  background-color: hsl(211, 100%, 35%);
+  text-decoration: none;
+}
+
+/* Card Styling */
+.contact-card-form {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1 1 calc(50% - 20px);
+  max-width: 500px;
+  text-align: left;
+}
+
+.contact-card-form h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.contact-card-form p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.contact-card-form ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-card-form ul li {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* Form Styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #007BFF;
+}
+
+.submit-button {
+  padding: 12px;
+  font-size: 16px;
+  background-color: hsl(211, 100%, 50%);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: hsl(211, 100%, 35%);
+}
+

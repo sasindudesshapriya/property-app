@@ -28,27 +28,47 @@ const PropertyList = () => {
   };
 
   return (
-    <div className='property-list-container'>
-      <h2>Property Listings</h2>
-      <Link to="/add" className="btn">Add New Property</Link>
-      <ul>
-        {properties.map((property) => (
-          <li key={property.id} className="property-item">
-            <div className="property-info">
-              <h3 className="property-title">{property.title}</h3>
-              <p>{property.description}</p>
-              <p>{property.type} - {property.purpose}</p>
-              <p>${property.price}</p>
-              <p>Status: {property.status}</p>
-            </div>
-            <div className="property-actions">
-              <Link to={`/edit/${property.id}`} className="edit-btn">Edit</Link>
-              <button onClick={() => handleDelete(property.id)} className="delete-btn">Delete</button>
-              <Link to={`/properties/${property.id}`} className="view-btn">View Details</Link>
-            </div>
-          </li>
-        ))}
-      </ul>
+    <div className="property-list-wrapper">
+      <div className="property-ttile-background">
+        {/* Header Section */}
+        <header className="property-list-header">
+          <h2>Property Listings</h2>
+        </header>
+        
+        {/* Titles Section */}
+        <div className="property-titles-list">
+          <h3>All Titles:</h3>
+          <ul>
+            {properties.map((property) => (
+              <li key={property.id} className="property-title-list-item">
+                {property.title}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Main Property List Section */}
+      <div className="property-list-container">
+        <ul>
+          {properties.map((property) => (
+            <li key={property.id} className="property-item">
+              <div className="property-info">
+                <h3 className="property-title">{property.title}</h3>
+                <p className="property-detail">{property.description}</p>
+                <p className="property-detail">{property.type} - {property.purpose}</p>
+                <p className="property-detail">${property.price}</p>
+                <p className="property-detail">Status: {property.status}</p>
+              </div>
+              <div className="property-actions">
+                <Link to={`/edit/${property.id}`} className="edit-btn">Edit</Link>
+                <button onClick={() => handleDelete(property.id)} className="delete-btn">Delete</button>
+                <Link to={`/properties/${property.id}`} className="view-btn">View Details</Link>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

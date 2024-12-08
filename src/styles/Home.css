@@ -1,32 +1,118 @@
+/* Background styling */
+body{
+  background-color:hsla(188, 100%, 42%, 0.1); 
+}
+
+.home-wrapper {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 50vh; /* Ensure the wrapper takes full viewport height */
+  padding: 20px; /* Maintain existing padding */
+  gap: 20px; /* Add consistent spacing between sections */
+}
+
+
+/* Home container styling */
 .home-container {
-    text-align: center;
-    margin-top: 50px;
-  }
-  
-  .home-container h1 {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .home-container p {
-    font-size: 18px;
-  }
-  
-  .home-links {
-    margin-top: 20px;
-  }
-  
-  .home-links a {
-    margin: 0 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-  }
-  
-  .home-links a:hover {
-    background-color: #0056b3;
-  }
-  
+  background-color: hsl(220, 22%, 55%); /* Neutral bluish-gray background for elegance */
+  margin-top: 0px; /* Adjust spacing from the top */
+  padding: 30px 30px; /* Add more padding for a spacious look */
+  border-radius: 12px; /* Slightly larger rounded corners for modern feel */
+  box-shadow: 0 8px 20px hsla(0, 0%, 0%, 0.25); /* Enhanced shadow for depth */
+  width: 100%; /* Wider container for better balance */
+  text-align: center; /* Center-align text */
+  color: white; /* White text for contrast */
+}
+
+/* Styling for headings and paragraph */
+.home-container h1 {
+  font-size: 2.4rem; /* Larger font size for heading */
+  font-weight: bold; /* Bold text for emphasis */
+  color: white;
+  margin-bottom: 20px; /* Space below heading */
+  line-height: 1.4; /* Improve readability */
+}
+
+.home-container p {
+  font-size: 1.2rem; /* Readable font size for paragraph */
+  margin-bottom: 40px; /* Larger space below paragraph */
+  line-height: 1.6; /* Better line spacing */
+}
+
+/* Styling for the button links */
+.home-links a,
+.home-links .btn {
+  margin: 0 20px; /* Add spacing between buttons */
+  padding: 12px 25px; /* Padding for button look */
+  border-radius: 8px; /* Smooth button corners */
+  background-color: #007bff; /* Primary blue color */
+  color: white; /* White text for contrast */
+  text-decoration: none; /* Remove underline */
+  font-size: 1rem; /* Adjust font size */
+  font-weight: bold; /* Make text bold */
+  transition: all 0.3s ease; /* Smooth transition on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for buttons */
+}
+
+/* Hover effects for links */
+.home-links a:hover,
+.home-links .btn:hover {
+  background-color: #0056b3; /* Darker blue for hover effect */
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+/* Add spacing for buttons */
+.home-links {
+  margin-top: 30px; /* Space between paragraph and buttons */
+}
+
+
+/* Style for bottom images container */
+.bottom-images-container {
+  display: flex;
+  justify-content: space-evenly;  /* Space out the boxes */
+  align-items: center;
+  padding: 20px;
+  margin-top: 0;  /* Add space between home container and this section */
+}
+
+/* Style for bottom-left and bottom-right boxes */
+.bottom-left-box, .bottom-right-box {
+  width: 45%;
+  height: 250px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Left image within the bottom-left box */
+.bottom-image-left {
+  width: 80%;
+  height: 80%;
+  background-image: url('../assets/image10.avif');  /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+/* Right image within the bottom-right box */
+.bottom-image-right {
+  width: 80%;
+  height: 80%;
+  background-image: url('../assets/image7.avif');  /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+/* Optional: Add text inside the boxes */
+.bottom-left-box p, .bottom-right-box p {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}

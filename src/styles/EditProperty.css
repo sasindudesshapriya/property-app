@@ -1,5 +1,9 @@
+body{
+  background-attachment: hsla(188, 100%, 42%, 0.1);
+}
+
 .edit-property-container {
-    background-color: #f4f4f4;
+    background-color: hsl(0, 0%, 96%);
     padding: 20px;
     margin-top: 20px;
     border-radius: 8px;
@@ -7,6 +11,8 @@
     width: 100%;
     max-width: 600px;
     margin: 20px auto;
+    position: relative;
+    left: -24%;
   }
   
   .edit-property-container h2 {

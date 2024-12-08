@@ -1,35 +1,67 @@
+/* Property Details Container */
 .property-details-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    max-width: 800px;
-    margin: 20px auto;
-  }
-  
-  .property-details-header {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-  
-  .property-details-item {
-    margin-bottom: 15px;
-    font-size: 16px;
-  }
-  
-  .property-details-item span {
-    font-weight: bold;
-  }
-  
-  .back-link {
-    display: inline-block;
-    margin-top: 15px;
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .back-link:hover {
-    text-decoration: underline;
-  }
-  
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  position: relative;
+  left: -24%;
+  z-index: 2;  
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.property-details-header {
+  font-size: 28px; 
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: hsl(0, 0%, 20%);
+  font-family: 'Georgia', serif; /* Added new font */
+}
+
+/* Property Details Item */
+.property-details-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: hsl(0, 0%, 33%);
+  font-family: 'Arial', sans-serif; /* New font for labels */
+}
+
+/* Property Value */
+.property-details-item span {
+  font-weight: bold;
+  color: hsl(0, 0%, 20%);
+  min-width: 100px; 
+}
+
+.property-details-item p {
+  margin: 0;
+  font-weight: normal;
+  color: hsl(211, 100%, 50%);
+  font-family: 'Courier New', monospace; /* New font for values */
+}
+
+/* Back Link */
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 110px;
+  color: hsl(211, 100%, 50%);
+  text-decoration: none;
+  font-size: 16px;
+  align-self: center; 
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Page Background */
+body {
+  background-color: hsl(0, 8%, 80%); /* Light neutral background color */
+}

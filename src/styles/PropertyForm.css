@@ -1,6 +1,6 @@
 .form-container {
     background-color: #fff;
-    padding: 20px;
+    padding: 25px;
     border-radius: 8px;
     border: 1px solid #ddd;
     width: 100%;
@@ -9,7 +9,7 @@
   }
   
   .form-input {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     width: 100%;
   }
   
@@ -21,17 +21,17 @@
   
   .form-input input, .form-input select {
     width: 100%;
-    padding: 8px;
+    padding: 5px;
     border-radius: 4px;
     border: 1px solid #ddd;
   }
   
   .form-input textarea {
     width: 100%;
-    padding: 8px;
+    padding: 5px;
     border-radius: 4px;
     border: 1px solid #ddd;
-    height: 100px;
+    height: 70px;
     resize: none;
   }
   

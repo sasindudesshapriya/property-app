@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import PropertyForm from '../components/PropertyForm';
 import { fetchPropertyById, updateProperty } from '../services/api';
 import "../styles/EditProperty.css";
+import "../styles/background.css";
+
 
 const EditProperty = () => {
   const { id } = useParams();
@@ -13,7 +15,7 @@ const EditProperty = () => {
       try {
         const response = await fetchPropertyById(id);
         setProperty(response.data);
-      } 
+      }
       catch (error) {
         console.error('Error fetching property for edit:', error);
       }
@@ -28,9 +30,10 @@ const EditProperty = () => {
   if (!property) return <p>Loading...</p>;
 
   return (
-    <div className='edit-property-container'>
-      <h2>Edit Property</h2>
-      <PropertyForm initialData={property} onSubmit={handleEditProperty} />
+    <div className="page-container">
+      <div className='edit-property-container'>
+        <PropertyForm initialData={property} onSubmit={handleEditProperty} />
+      </div>
     </div>
   );
 };

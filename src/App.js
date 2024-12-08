@@ -5,6 +5,8 @@ import AddProperty from './pages/AddProperty';
 import EditProperty from './pages/EditProperty';
 import PropertyDetails from './components/PropertyDetails';
 import "./styles/App.css";
+import PropertyList from './components/PropertyList';
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Route path="/add" element={<AddProperty />} />
         <Route path="/edit/:id" element={<EditProperty />} />
         <Route path="/properties/:id" element={<PropertyDetails />} />
+        <Route path="/listings" element={<PropertyList />} />
+        <Route path="/contact" element={<ContactUs />} />
       </Routes>
     </Router>
   );
