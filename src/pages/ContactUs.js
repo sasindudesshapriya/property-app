@@ -14,7 +14,7 @@ const ContactUs = () => {
             Have questions, feedback, or need assistance? 
             <br /> We’re here to help!
           </p>
-          <ul>
+          <ul className='contact-list'>
             <li><strong>Email:</strong> support@PropertyManagement.com</li>
             <li><strong>Phone:</strong> +1 234 567 890</li>
             <li><strong>Address:</strong> 123 Your Street, Your City, Your Country</li>
