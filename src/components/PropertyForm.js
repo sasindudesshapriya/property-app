@@ -18,12 +18,15 @@ const PropertyForm = ({ initialData = {} }) => {
     description: "",
   });
 
-  // Address and map states
-  const [address, setAddress] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-  const [isMapVisible, setIsMapVisible] = useState(true); // Manage map visibility
+  const [selectedLocation, setSelectedLocation] = useState({
+    lat: null,
+    lon: null,
+    address: "",
+  });
+
   const mapContainer = useRef(null);
   const mapRef = useRef(null);
+  const markerRef = useRef(null);
 
   // Load initial data
   useEffect(() => {
@@ -34,34 +37,6 @@ const PropertyForm = ({ initialData = {} }) => {
 
   const handleChange = (e) => {
     setProperty({ ...property, [e.target.name]: e.target.value });
-  };
-
-  const handleAddressChange = async (e) => {
-    const query = e.target.value;
-    setAddress(query);
-
-    if (query.length > 2) {
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${query}&countrycodes=LK`
-      );
-      const data = await response.json();
-      setSuggestions(data);
-    } else {
-      setSuggestions([]);
-    }
-  };
-
-  const handleSelectAddress = (place) => {
-    setAddress(place.display_name);
-    setSuggestions([]);
-
-    if (mapRef.current) {
-      const { lat, lon } = place;
-      mapRef.current.setView([lat, lon], 13);
-      L.marker([lat, lon]).addTo(mapRef.current);
-    } else {
-      console.error("Map is not initialized yet");
-    }
   };
 
   const handleReset = () => {
@@ -77,13 +52,16 @@ const PropertyForm = ({ initialData = {} }) => {
             description: "",
           }
     );
-    setAddress("");
-    setSuggestions([]);
+    setSelectedLocation({
+      lat: null,
+      lon: null,
+      address: "",
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const propertyData = { ...property, address };
+    const propertyData = { ...property, location: selectedLocation };
     if (initialData.id) {
       await updateProperty(initialData.id, propertyData);
     } else {
@@ -92,13 +70,35 @@ const PropertyForm = ({ initialData = {} }) => {
     navigate("/");
   };
 
+  const handleMapClick = async (e) => {
+    const { lat, lng } = e.latlng;
+
+    // Move or add a marker to the clicked location
+    if (!markerRef.current) {
+      markerRef.current = L.marker([lat, lng]).addTo(mapRef.current);
+    } else {
+      markerRef.current.setLatLng([lat, lng]);
+    }
+
+    // Reverse geocode the selected location
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`
+    );
+    const data = await response.json();
+    const address = data.display_name || "Unknown Address";
+
+    // Update the state with the selected location
+    setSelectedLocation({ lat, lon: lng, address });
+  };
+
   useEffect(() => {
-    if (!mapRef.current && mapContainer.current && isMapVisible) {
+    if (!mapRef.current && mapContainer.current) {
       const sriLankaBounds = [
         [5.916, 79.652],
         [9.842, 81.891],
       ];
 
+      // Initialize the map
       const mapInstance = L.map(mapContainer.current).fitBounds(sriLankaBounds);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -107,17 +107,19 @@ const PropertyForm = ({ initialData = {} }) => {
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(mapInstance);
 
+      // Add click event listener
+      mapInstance.on("click", handleMapClick);
+
       mapRef.current = mapInstance;
     }
 
-    // Cleanup map when it is hidden
     return () => {
       if (mapRef.current) {
         mapRef.current.remove();
         mapRef.current = null;
       }
     };
-  }, [isMapVisible]); // Trigger the effect when map visibility changes
+  }, []);
 
   return (
     <div>
@@ -144,37 +146,6 @@ const PropertyForm = ({ initialData = {} }) => {
               onChange={handleChange}
               required
             />
-          </div>
-          <div className="form-input">
-            <label>Address</label>
-            <input
-              type="text"
-              value={address}
-              onChange={handleAddressChange}
-              placeholder="Enter address"
-            />
-            {suggestions.length > 0 && (
-              <select
-                onChange={(e) => {
-                  const selectedPlace = suggestions.find(
-                    (place) => place.display_name === e.target.value
-                  );
-                  if (selectedPlace) {
-                    handleSelectAddress(selectedPlace);
-                  }
-                }}
-                value={address}
-              >
-                <option value="" enabled>
-                  Select an address
-                </option>
-                {suggestions.map((place) => (
-                  <option key={place.place_id} value={place.display_name}>
-                    {place.display_name}
-                  </option>
-                ))}
-              </select>
-            )}
           </div>
           <div className="form-input">
             <label>Purpose</label>
@@ -216,6 +187,17 @@ const PropertyForm = ({ initialData = {} }) => {
             />
           </div>
 
+          {/* Map */}
+          <div
+            ref={mapContainer}
+            style={{ height: "400px", width: "100%", marginTop: "20px" }}
+          ></div>
+          {selectedLocation.address && (
+            <p>
+              <strong>Selected Address:</strong> {selectedLocation.address}
+            </p>
+          )}
+
           <div className="form-buttons">
             <button type="submit" className="btn">
               {initialData.id ? "Edit Property" : "Add Property"}
@@ -226,30 +208,6 @@ const PropertyForm = ({ initialData = {} }) => {
           </div>
         </form>
       </div>
-
-      {/* Map Panel with Close Button */}
-      {isMapVisible ? (
-        <div className="map-panel">
-          <button
-            className="close-map-btn"
-            onClick={() => setIsMapVisible(false)}
-          >
-            Close Map
-          </button>
-          <div
-            ref={mapContainer}
-            id="map"
-            style={{ height: "400px", width: "100%" }}
-          />
-        </div>
-      ) : (
-        <button
-          className="show-map-btn"
-          onClick={() => setIsMapVisible(true)}
-        >
-          Show Map
-        </button>
-      )}
     </div>
   );
 };

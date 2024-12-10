@@ -1,67 +1,83 @@
+
 /* Property Details Container */
 .property-details-container {
-  background-color: #f4f4f4;
-  padding: 20px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  width: 100%;
-  max-width: 400px;
-  margin: 20px auto;
-  position: relative;
-  left: -24%;
-  z-index: 2;  
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* White background for clarity */
+  margin-left: -650px;
+  padding: 30px; /* Uniform padding for all content */
+  border-radius: 10px; /* Rounded corners for modern design */
+  border: 1px solid #e0e0e0; /* Subtle border for structure */
+  max-width: 600px; /* Restrict maximum width */
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
-/* Title */
+/* Header */
 .property-details-header {
-  font-size: 28px; 
+  font-size: 28px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: hsl(0, 0%, 20%);
-  font-family: 'Georgia', serif; /* Added new font */
+  color: hsl(216, 80%, 40%); /* Elegant dark blue */
+  font-family: 'Merriweather', serif; /* Serif font for emphasis */
+  text-align: center; /* Centered header */
 }
 
-/* Property Details Item */
+/* Property Details Items */
 .property-details-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  font-size: 16px;
-  color: hsl(0, 0%, 33%);
-  font-family: 'Arial', sans-serif; /* New font for labels */
+  margin-bottom: 15px; /* Space between items */
+  padding: 0 50px;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif; /* Modern, clean sans-serif font */
+  color: hsl(210, 22%, 30%); /* Neutral dark text color */
+  line-height: 1.0; /* Better readability */
 }
 
-/* Property Value */
+/* Bold label */
 .property-details-item span {
   font-weight: bold;
-  color: hsl(0, 0%, 20%);
-  min-width: 100px; 
+  display: inline-block;
+  margin-bottom: 5px; /* Adds space below the label */
+  color: hsl(216, 80%, 40%);
 }
 
-.property-details-item p {
-  margin: 0;
-  font-weight: normal;
-  color: hsl(211, 100%, 50%);
-  font-family: 'Courier New', monospace; /* New font for values */
+/* Value container */
+.property-details-value {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: black;
+  word-wrap: break-word; /* Ensures long addresses wrap properly */
+  max-width: 300px; /* Limit width to fit approximately 3 lines */
+  line-height: 1.5; /* Line spacing for better readability */
 }
+
 
 /* Back Link */
 .back-link {
   display: inline-block;
   margin-top: 20px;
-  margin-left: 110px;
-  color: hsl(211, 100%, 50%);
-  text-decoration: none;
+  color: hsl(220, 90%, 56%); /* Bright blue link color */
   font-size: 16px;
-  align-self: center; 
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .back-link:hover {
+  color: hsl(220, 80%, 46%); /* Slightly darker blue on hover */
   text-decoration: underline;
 }
 
-/* Page Background */
-body {
-  background-color: hsl(0, 8%, 80%); /* Light neutral background color */
+/* Responsive Design */
+@media (max-width: 768px) {
+  .property-details-container {
+    padding: 20px; /* Adjust padding for smaller screens */
+    max-width: 90%; /* Ensure the container fits smaller devices */
+    margin: 0 auto;
+  }
+
+  .property-details-header {
+    font-size: 24px; /* Scaled-down font size */
+  }
+
+  .property-details-item {
+    font-size: 16px; /* Scaled-down font size */
+  }
 }

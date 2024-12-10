@@ -27,7 +27,10 @@ const PropertyDetails = () => {
       <div className="property-details-container">
         <h2 className="property-details-header">{property.title}</h2>
         <p className="property-details-item">
-          <span>Description:</span> {property.description}
+          <span>Description:</span> 
+          <div className="property-details-value">
+          {property.description}
+          </div>
         </p>
         <p className="property-details-item">
           <span>Type:</span> {property.type}
@@ -41,6 +44,13 @@ const PropertyDetails = () => {
         <p className="property-details-item">
           <span>Status:</span> {property.status}
         </p>
+        <p className="property-details-item">
+          <span>Address:</span>
+          <div className="property-details-value">
+            {property.location?.address || "Not available"}
+          </div>
+        </p>
+
         <Link to="/" className="back-link">Back to Properties</Link>
       </div>
     </div>

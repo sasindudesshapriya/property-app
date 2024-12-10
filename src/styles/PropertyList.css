@@ -2,11 +2,7 @@
 .property-list-wrapper {
   min-height: 100vh;
   display: flex;
-  flex-direction: row;
-}
-
-.property-ttile-background{
-  background-color: hsla(188, 100%, 42%, 0.1); 
+  flex-direction: column; /* Adjusted to column to fit the layout structure better */
 }
 
 /* Header Section */
@@ -22,14 +18,13 @@
 
 /* Title List Section */
 .property-titles-list {
-  background-color: hsl(0, 8%, 80%);;
+  background-color: hsl(0, 8%, 80%);
   margin-left: 20px; /* Offset from the left for fixed header */
-  padding: 20px; /* Add padding for better spacing */
-  background-image: url('/src//assets/image1.webp'); /* Light background color */
-  border-radius: 8px; /* Rounded corners for a soft look */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-  margin-top: 20px; /* Space from the top of the page */
-  width: 80%; /* Ensure it occupies a good portion of the width */
+  padding: 20px;
+  background-image: url('/src/assets/image1.webp'); /* Light background color */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
   font-size: 1.5rem;
   font-weight: bold;
 }
@@ -38,40 +33,36 @@
 .property-titles-list h3 {
   font-size: 20px;
   font-weight: bold;
-  color: #333; /* Dark color for contrast */
-  margin-bottom: 15px; /* Space below the heading */
+  color: #333;
+  margin-bottom: 15px;
   font-family: 'Arial', sans-serif;
 }
 
 /* Unordered List Style */
 .property-titles-list ul {
-  list-style-type: disc; /* Adds bullet points */
-  padding-left: 20px; /* Indentation for the bullet points */
-  color: #555; /* Slightly lighter color for list items */
+  list-style-type: disc;
+  padding-left: 20px;
+  color: #555;
 }
 
 /* Individual Title Item */
 .property-title-list-item {
   font-size: 16px;
-  margin-bottom: 8px; /* Space between each title */
-  color: #333; /* Dark color for visibility */
+  margin-bottom: 8px;
+  color: #333;
   font-family: 'Arial', sans-serif;
 }
 
-
 /* Background for Main Content */
 .property-list-container {
-  flex: 1;
-  background-image: url('../assets/image1.webp'); /* Replace with your image path */
+  display: flex;
+  justify-content: center; /* Center the card horizontally */
+  align-items: center; /* Center the card vertically */
+  height: 100%; /* Ensure the container takes full height */
+  background-image: url('../assets/image1.webp'); /* Set background image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 20px;
-  overflow-y: auto;
-  display: flex;
-  flex-wrap: wrap; /* Ensures items wrap to a new row */
-  gap: 20px; /* Adds space between rows and columns */
-  justify-content: center; /* Centers items horizontally */
 }
 
 /* Individual Property Card */
@@ -79,11 +70,13 @@
   background: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  margin-top: 20px;
   margin-bottom: 10px;
   padding: 15px;
-  width: 300px; /* Adjust card width as necessary */
+  width: 100%; /* Full width of its grid column */
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
@@ -113,11 +106,11 @@
 .property-actions {
   display: flex;
   gap: 10px;
-  justify-content: space-between; /* Ensures buttons are evenly spaced */
+  justify-content: space-between;
   padding-top: 10px;
 }
 
-/* Button styles (from previous code) */
+/* Button styles */
 .property-actions .edit-btn,
 .property-actions .delete-btn,
 .property-actions .view-btn {
@@ -154,4 +147,16 @@
 
 .property-actions .view-btn:hover {
   background-color: hsl(120, 100%, 25%);
+}
+
+/* List Section Alignment */
+.property-titles-list {
+  grid-column: 1 / span 2; /* Span across both columns */
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Specific Adjustments for Grid Layout */
+.property-titles-list {
+  grid-column: 1 / span 2; /* Adjust the list to span across both columns if needed */
 }
